@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-env jquery */
 
 /**
  * Example store structure
