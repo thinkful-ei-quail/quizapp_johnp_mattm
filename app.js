@@ -28,6 +28,9 @@ const store = {
             correctAnswer: '2019'
         }
     ],
+
+
+    //this may be better off being moved to an entirely seperate object called state -JP
     quizStarted: false,
     questionNumber: 0,
     score: 0
@@ -50,12 +53,31 @@ const store = {
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-  // These functions return HTML templates
+
+//Mark Up Generator Functions -JP
+//these will generate html to be injected into index.html using the .html() function in jquery -JP
+
+
+// These functions return HTML templates
 
 /********** RENDER FUNCTION(S) **********/
+
+
+// these should  call the generator functions and be called by event handlers-JP
+
 
   // This function conditionally replaces the contents of the <main> tag based on the state of the store
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
+
+//these will call different generator functions for events including opening the page overall-JP
+
+
   // These functions handle events (submit, click, etc)
+
+
+  //examples function handleSubmitAnswer(), function handleWrongAnswer(), function handleCorrectAnswer(), function handleClickAnswer() -JP
+
+
+  //call the start function-JP
