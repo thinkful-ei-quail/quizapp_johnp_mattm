@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quiz App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <h1 class="title main_heading">MTG LORE QUIZ:HARD MODE</h1>
+    </header>
+    <main>
+        <section id="start"class="board_column_body">
+            <div class="board_column_body">
+                <h2 class="welcometext board_column_header">Welcome</h2>
+                <div>
+                <h3>Press Start to Begin</h3>
+
+                    <button type="submit"><span>Start</span></button>
+                </div>
+            </div>
+
+        </section>
+        <section id="right" class="board_column_body">
+            <div>
+                <h2 class="gotitright">How did you know that?</h2>
+                <ul class="correctanswerul">
+                    <li class="correctanswerli"><span>Correct Answer</li>
+                </ul>
+            </div>
+            <div>
+                <button type="submit"><span>Next</span></button>
+            </div>
+        </section>
+        <section class="board_column_body">
+            <div>
+                <h2 class="gotitwrong">Go read the lore, noob.</h2>
+                <ul class="incorrectanswerul">
+                    <li class="incorrectanswer"><span>Correct Answer</li>
+                </ul>
+            </div>
+            <div>
+                <button type="submit"><span>Next</span></button>
+            </div>
+        </section>
+        <section id="question1"class="board_column_body">
+            <div>
+                <h2 class="questiontext">Question Text</h2>
+                <ul class="answercontainer">
+                    <li class="answer"><button type="button"><span>Answer 1</span></button></li>
+                    <li class="answer"><button type="button"><span>Answer 2</span></button></li>
+                    <li class="answer"><button type="button"><span>Answer 3</span></button></li>
+                    <li class="answer"><button type="button"><span>Answer 4</span></button></li>
+                </ul>
+            </div>
+            <div><button type="submit"><span>Submit</span></button>
+            </div>
+        </section>
+        <section id="endscreen" class="board_column_body">
+            <div>
+                <h2 class="finished">Thanks for playing</h2>
+                <ul class="endul">
+                    <li class="incorrectanswer"><span>Score</span></li></ul>
+                </ul>
+            </div>
+            <div>
+                <button type="reset"><span>Try Again?</span></button>
+            </div>
+        </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

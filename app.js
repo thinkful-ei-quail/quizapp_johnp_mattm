@@ -15,7 +15,8 @@ const store = {
                 'pink',
                 'green'
             ],
-            correctAnswer: 'green'
+            correctAnswer: 'green',
+            answered: false
         },
         {
             question: 'What is the current year?',
@@ -25,14 +26,15 @@ const store = {
                 '2019',
                 '2005'
             ],
-            correctAnswer: '2019'
+            correctAnswer: '2019',
+            answered: false
         }
     ],
 
 
     //this may be better off being moved to an entirely seperate object called state -JP
     quizStarted: false,
-    questionNumber: 0,
+    questionIndex: 0,
     score: 0
 };
 
@@ -60,8 +62,25 @@ const store = {
 
 // These functions return HTML templates
 
+
+
+//function generate(){};
+//function that creates template for each question answers, start screen, end screen
+//function generateQuestion(){inject html with question and buttons for answers};
+//function generateStart(){button that starts quiz};
+//function generateEnd(){show score and button to restart};
+//function generateScore(){show score show progress};
+//function generateAnswer(){inject html with correct answer highlighted green and wrong answers highlighted red button to go to next q};
+
 /********** RENDER FUNCTION(S) **********/
 
+
+//function render(){};
+//function renderQuestion(){call generatequestion };
+//function renderStart(){call generatestart};
+//function renderAnswer(){call generateanswer }
+//function renderEnd(){call generate end};
+//function renderScore(){call generate score};
 
 // these should  call the generator functions and be called by event handlers-JP
 
@@ -70,6 +89,15 @@ const store = {
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
+//function handle(){};
+//function handleStart(){};
+//function handleCorrect(){
+    //increment score push user to next question
+//};
+//function handleWrong(){};
+//maybe play sound if wrong?
+//function handleClickAnswer(){};
+//function hanldeReset(){};
 
 //these will call different generator functions for events including opening the page overall-JP
 
@@ -77,7 +105,7 @@ const store = {
   // These functions handle events (submit, click, etc)
 
 
-  //examples function handleSubmitAnswer(), function handleWrongAnswer(), function handleCorrectAnswer(), function handleClickAnswer() -JP
 
 
-  //call the start function-JP
+  //will start the intial html injection
+  //$(handleStart);
