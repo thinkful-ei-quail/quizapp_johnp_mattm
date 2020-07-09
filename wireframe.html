@@ -16,11 +16,11 @@
         <h1 class="title main_heading">MTG LORE QUIZ:HARD MODE</h1>
     </header>
     <main>
-        <section id="start"class="board_column_body">
+        <section id="start" class="board_column_body">
             <div class="board_column_body">
                 <h2 class="welcometext board_column_header">Welcome</h2>
                 <div>
-                <h3>Press Start to Begin</h3>
+                    <h3>Press Start to Begin</h3>
 
                     <button type="submit"><span>Start</span></button>
                 </div>
@@ -49,14 +49,16 @@
                 <button type="submit"><span>Next</span></button>
             </div>
         </section>
-        <section id="question1"class="board_column_body">
+        <section id="question" class="board_column_body">
             <div>
                 <h2 class="questiontext">Question Text</h2>
                 <ul class="answercontainer">
-                    <li class="answer"><button type="button"><span>Answer 1</span></button></li>
-                    <li class="answer"><button type="button"><span>Answer 2</span></button></li>
-                    <li class="answer"><button type="button"><span>Answer 3</span></button></li>
-                    <li class="answer"><button type="button"><span>Answer 4</span></button></li>
+                    <li class="answer"><button type="button"><label>
+                                <form>Answer 1</form>
+                            </label></button></li>
+                    <li class="answer"><button type="button"><label>Answer 2</label></button></li>
+                    <li class="answer"><button type="button"><label>Answer 3</label></button></li>
+                    <li class="answer"><button type="button"><label>Answer 4</label></button></li>
                 </ul>
             </div>
             <div><button type="submit"><span>Submit</span></button>
@@ -66,11 +68,20 @@
             <div>
                 <h2 class="finished">Thanks for playing</h2>
                 <ul class="endul">
-                    <li class="incorrectanswer"><span>Score</span></li></ul>
+                    <li class="finalscore"><span>Score</span></li>
+                </ul>
                 </ul>
             </div>
             <div>
                 <button type="reset"><span>Try Again?</span></button>
+            </div>
+        </section>
+        <section id="scoreboard">
+            <div id="scoreboard_div">
+                <ul id="scoreboard_ul">
+                    <li id="scoreboard_li"><span>Score:</span></li>
+                    <li id="scoreboard_li"><span>Progress:</span></li>
+                </ul>
             </div>
         </section>
 

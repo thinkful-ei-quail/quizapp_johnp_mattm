@@ -4,9 +4,9 @@
 /**
  * Example store structure
  */
-const store = {
+const questions =
     // 5 or more questions are required
-    questions: [
+    [
         {
             question: 'What color is broccoli?',
             answers: [
@@ -29,14 +29,14 @@ const store = {
             correctAnswer: '2019',
             answered: false
         }
-    ],
+    ]
 
-
+const state = [
     //this may be better off being moved to an entirely seperate object called state -JP
-    quizStarted: false,
-    questionIndex: 0,
-    score: 0
-};
+    quizStarted = false,
+    questionIndex = 0,
+    score = 0
+];
 
 /**
  *
@@ -66,21 +66,113 @@ const store = {
 
 //function generate(){};
 //function that creates template for each question answers, start screen, end screen
-//function generateQuestion(){inject html with question and buttons for answers};
-//function generateStart(){button that starts quiz};
-//function generateEnd(){show score and button to restart};
-//function generateScore(){show score show progress};
-//function generateAnswer(){inject html with correct answer highlighted green and wrong answers highlighted red button to go to next q};
+function generateQuestion(randomQuestionIndex) {//inject html with question and buttons for answers
+    $("main").html(`
+<div>
+    <h2 class="questiontext">${questions[state.questionIndex].question}</h2>
+    <form class="answercontainer">
+        <ul>
+            <li class="answer_button"><button type="button"><label>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
+            <li class="answer_button"><button type="button"><span>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
+            <li class="answer_button"><button type="button"><span>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
+            <li class="answer_button"><button type="button"><span>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
+        </ul>
+    </form>
+</div>`
+        //<div><button type="submit"><span>Submit</span></button>
+        //</div>`
+    );
+};
+//function generateStart(){button that starts quiz};-MM
+function generateEnd() {//show score and button to restart-MM
+    $("main").html(`
+    <section id="endscreen" class="board_column_body">
+            <div>
+                <h2 class="finished">Thanks for playing</h2>
+                <ul class="endul">
+                    <li class="finalscore"><span>Score</span></li></ul>
+                </ul>
+            </div>
+            <div>
+            <button type="reset"><span>Try Again?</span></button>
+            </div>
+        </section>
+    `);
+};
+
+function generateScore() {//show score show progress
+    $("main").html(`<section id="scoreboard">
+    <div id="scoreboard_div">
+        <ul id="scoreboard_ul">
+            <li id="scoreboard_li"><span>Score:</span></li>
+            <li id="scoreboard_li"><span>Progress:</span></li>
+        </ul>
+    </div>
+</section>`);
+};
+
+function generateCorrectAnswer() {//inject html with correct answer highlighted green and wrong answers highlighted red button to go to next q
+    $("main").html(` <section id="correct" class="board_column_body">
+<div>
+    <h2 id="correct">How did you know that?</h2>
+    <ul id="correct">
+        <li id="correct"><span>Correct Answer</li>
+    </ul>
+</div>
+<div>
+    <button id="correct" type="submit"><span>Next</span></button>
+</div>
+</section>`)
+};
+
+function generateIncorrectAnswer(){//inject html with correct answer highlighted green and wrong answers highlighted red button to go to next q
+    $("main").html(`<section id="incorrect" class="board_column_body">
+    <div id="incorrect">
+        <h2 id="incorrect" class="gotitwrong">Go read the lore, noob.</h2>
+        <ul id="incorrect" class="incorrectanswerul">
+            <li id="incorrect" class="incorrectanswer"><span>Correct Answer</li>
+        </ul>
+    </div>
+    <div>
+        <button id="incorrect" type="submit"><span>Next</span></button>
+    </div>
+</section>`
+    )
+};
 
 /********** RENDER FUNCTION(S) **********/
 
 
 //function render(){};
-//function renderQuestion(){call generatequestion };
-//function renderStart(){call generatestart};
-//function renderAnswer(){call generateanswer }
-//function renderEnd(){call generate end};
-//function renderScore(){call generate score};
+function renderQuestion() {
+    $("main").empty();
+    generateQuestion();
+};
+
+//function renderStart(){call generatestart};-MM
+
+function renderCorrectAnswer(){//call generateanswer
+    $("main").empty();
+    state.questionIndex = state.questionIndex + 1;
+    state.score = state.score + 1;
+    generateCorrectAnswer();
+};
+
+function renderIncorrectAnswer(){//call generateanswer
+    $("main").empty();
+
+    generateIncorrectAnswer();
+};
+
+function renderEnd() {//call generate end-MM
+    $("main").empty();
+    generateEnd()
+};
+
+function renderScore() {//call generate score
+    $("main").empty();
+    generateScore();
+};
 
 // these should  call the generator functions and be called by event handlers-JP
 
@@ -89,14 +181,20 @@ const store = {
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
-//function handle(){};
-//function handleStart(){};
-//function handleCorrect(){
+//function handleQuiz(){};--MM
+//function handleStart(){};--MM
+function handleCorrectAnswer(){
+    $(".answer_button").on("submit",function(){
+        if("label".val()===questions[state.questionIndex].correctAnswer){
+            renderCorrectAnswer();
+
+        }
+    })
     //increment score push user to next question
-//};
+};
 //function handleWrong(){};
 //maybe play sound if wrong?
-//function handleClickAnswer(){};
+//funcntion handleEnd(){}
 //function hanldeReset(){};
 
 //these will call different generator functions for events including opening the page overall-JP
@@ -108,4 +206,4 @@ const store = {
 
 
   //will start the intial html injection
-  //$(handleStart);
+  $(handleQuiz);
