@@ -1,2 +1,2 @@
 # quizapp_johnp_mattm
-basic quiz app with wire frame
+created by John Pendergast and Mathew Murray.
