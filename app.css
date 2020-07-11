@@ -30,18 +30,30 @@
 }
 
 h1 {
-    font: ;
     color:black;
     letter-spacing: 0.2rem;
     font-size: 1.5rem;
 }
 
+h2 {
+  background-color: rgb(255, 223, 122, .4);
+  border-radius: 2rem;
+
+}
+
+img{
+  flex: 1;
+  border-radius: 1rem;
+  width: 90%;
+  margin-top: 2rem;
+  place-items: center;
+}
+
 header{
     border-radius: 1rem;
-    background-color:rgb(248, 210, 136);
+    background-color:rgb(248, 210, 136, .8);
     width: clamp(23ch, 50vw, 46ch);
     margin: 0rem 1rem ;
-
 }
 
 body {
@@ -49,7 +61,11 @@ body {
     place-content: center;
     height: 100vh;
     place-items: center;
-    font-family:  Verdana, Geneva, sans-serif;
+    font-family: 'Fira Sans', sans-serif;
+    background-image: url('images/urza.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .visual {
@@ -66,7 +82,7 @@ body {
     width: clamp(23ch, 50vw, 46ch);
     display: flex;
     flex-direction: column;
-    background:rgb(255, 223, 122, .8);
+    background:rgb(255, 223, 122, .4);
     padding: 1rem;
     place-content: center;
   }
@@ -74,7 +90,6 @@ body {
   .centerme{
     place-items: center;
     text-align: center;
-
   }
 
   .answercontainer, .buttoncontainer{
@@ -83,9 +98,7 @@ body {
     justify-content: center;
     margin-left: 0em;
     margin-right: 3em;
-
 }
-
 
 button {
   box-shadow: 3px 4px 0px 0px #899599;
@@ -95,19 +108,86 @@ button {
   flex: 1;
   cursor:pointer;
   color:black;
-  font-family:Arial;
+  font-family: 'Fira Sans', sans-serif;
   font-size:1.2rem;
-  margin:1rem 1rem;
-  width: 12rem;
+  margin:1rem;
   text-decoration:none;
   text-shadow:0px 1px 0px #898a94;
-
+  width: 80%;
 }
 
+  .answer_button {
+    width: 10rem;
+  }
 
   ul li{
       align-items: flex-start;
       list-style-type: none;
   }
+
+  @media(min-width:500px){
+    body {
+      height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: url('images/urza_head.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h1{
+      text-align: center;
+      font-size: 3rem;
+      padding: 0rem;
+      margin-left: 0em;
+      margin-right: 0em;
+    }
+
+    h2 {
+      text-align: center;
+      width: 100%;
+      font-size: 2rem;
+      letter-spacing: 0.3rem;
+
+    }
+
+    .questionimg {
+      margin-top: 1rem;
+    }
+
+    img{
+      border-radius: 2rem;
+    }
+    /**.visual {
+      width: 100%;
+      height: 100%;
+    }*/
+    .card {
+      border-radius: 2rem;
+      width: 96.3%;
+      display: flex;
+      flex-direction: column;
+      background:rgb(255, 223, 122, .4);
+      place-content: center;
+    }
+
+    header{
+      width: 90%;
+      border-radius: 1rem;
+      background-color:rgb(248, 210, 136, .8);
+    }
+
+    .answer_button {
+      width: 20rem;
+    }
+
+    .otherbutton{
+      margin-right: 1em;
+    }
+
+    button{
+      margin-bottom: 1rem;
+    }
+}
 
 /** copy from here up*/

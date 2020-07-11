@@ -13,8 +13,11 @@ const questions = [
       'Dyfed'
     ],
     correctAnswer: 'Dyfed',
-    answered: false
+    answered: false,
+    image: '<img src = \"images/planeswalkers.jpg"\>',
+    correctImage: '<img src = \"images/teferi.jpg\">'
   },
+
   {
     question: 'Who won the brothers war?',
     answers: [
@@ -24,8 +27,11 @@ const questions = [
       'Urza'
     ],
     correctAnswer: 'Urza',
-    answered: false
+    answered: false,
+    image: `<img src = images/brothers_war.jpg>`,
+    correctImage: '<img src = \'images/black_lotus.jpg\'>'
   },
+
   {
     question: 'What was the name of Captian Sisay\'s ship?',
     answers: [
@@ -35,8 +41,11 @@ const questions = [
       'Burning Vengeance'
     ],
     correctAnswer: 'Weatherlight',
-    answered: false
+    answered: false,
+    image: '<img src = \'images/sisay.jpg\'>',
+    correctImage: '<img src = "images/The-Weatherlight.jpg">'
   },
+
   {
     question: 'What plane was Chandra from?',
     answers: [
@@ -46,19 +55,26 @@ const questions = [
       'Alara'
     ],
     correctAnswer: 'Regatha',
-    answered: false
+    answered: false,
+    image: '<img src = \'images/chandra.jpg\'>',
+    correctImage: '<img src = \'images/ragatha.jpg\'>'
   },
+
   {
     question: 'Where is the seat of Bolas?',
     answers: [
       'Dominaria',
       'Kamigawa',
       'Ravnica',
-      'The meditation realm'
+      'The Meditation Realm'
     ],
-    correctAnswer: 'The meditation realm',
-    answered: false
+    correctAnswer: 'The Meditation Realm',
+    answered: false,
+    image: '<img src = \'images/horns.jpg\'>',
+    correctImage: '<img src = \'images/grin.jpg\'>'
   }
+
+
 ];
 
 
@@ -73,10 +89,10 @@ const state = {
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 function generateQuestion() {
-  $('main').html(`
-<section class="parent">
+  $('main').html(
+`<section class="parent">
   <div class="card centerme">
-      <h1 class="questiontext">${questions[state.questionIndex].question}</h1>
+      <h2 class="questiontext">${questions[state.questionIndex].question}</h2>
       <form class="card centerme">
           <ul >
             <div class="answercontainer centerme">
@@ -89,25 +105,29 @@ function generateQuestion() {
             </div>
           </ul>
       </form>
+      <div class="questionimg">${questions[state.questionIndex].image}</div>
   </div>
-</section>`
+</section>
+`
   );
 }
+
 function generateStart() {
   $('main').html(
-
     `
     <header>
       <h1 class="centerme">MTG LORE QUIZ: Planeswalkers</h1>
     </header>
     <section id="start"class="parent">
         <div class="card centerme">
-          <h1 class="welcometext">Welcome</h1>
+          <h2 class="welcometext">Welcome</h2>
           <div class="visual centerme">
             <h3>Press Start to Begin</h3>
-            <button class="submit_start" type="submit">
-              <label>Start</label>
-            </button>
+
+              <button class="submit_start otherbutton" type="submit">
+                <label>Start</label>
+              </button>
+
           </div>
         </div>
     </section>`
@@ -121,13 +141,15 @@ function generateEnd() {
         <h2 class="finished">Thanks for playing</h2>
           <div class="visual centerme">
           <h3 class="finalscore"><span> Your Final Score is ${state.score}</h3>
-            <button id="reset" type="reset">
+            <button id="reset" type="reset" class="otherbutton">
               <label>Try Again?</label>
             </button>
           </div>
+          <div class="questionimg"><img src = 'images/crux_of_fate.jpg'></div>
         </div>
   </section>
     <section id="scoreboard"></section>
+
     `);
 }
 
@@ -144,6 +166,7 @@ function generateScore() {
     </div>
 </section>`);
 }
+
 function generateCorrectAnswer() {
   $('main').html(`
 <section id="correct" class="parent">
@@ -154,12 +177,16 @@ function generateCorrectAnswer() {
 
 
       <div class="centerme">
-        <button id="next" type="submit"><label>Next</label></button>
+        <button id="next" type="submit" class="otherbutton"><label>Next</label></button>
       </div>
     </div>
+    <div class="questionimg">${questions[state.questionIndex].correctImage}</div>
   </div>
-</section>`);
+</section>
+
+`);
 }
+
 function generateIncorrectAnswer() {
   $('main').html(`
   <section id="incorrect" class="parent">
@@ -168,12 +195,14 @@ function generateIncorrectAnswer() {
         <div class="visual centerme">
           <h3 id="incorrect" class="incorrectanswer class="card centerme"">The answer was ${questions[state.questionIndex].correctAnswer}</h3>
           <div class="centerme">
-            <button id="next" type="submit"><span>Next</span></button>
+            <button id="next" type="submit" class="otherbutton"><span>Next</span></button>
           </div>
         </div>
+        <div class="questionimg"><img src = 'images/wrong!.jpg'></div>
     </div>
+</section>
 
-</section>`
+`
   );
 }
 
@@ -185,21 +214,25 @@ function renderStart() {
   $("header").empty();
   generateStart();
 }
+
 function renderQuestion() {
   generateQuestion();
   renderScore();
 }
+
 function renderCorrectAnswer() {
   generateCorrectAnswer();
   state.score = state.score + 1;
   state.questionIndex = state.questionIndex + 1;
   renderScore();
 }
+
 function renderIncorrectAnswer() {
   generateIncorrectAnswer();
   state.questionIndex = state.questionIndex + 1;
   renderScore();
 }
+
 function renderEnd() {
   generateEnd();
   renderScore();
@@ -249,6 +282,7 @@ function handleNextButtonPressed() {
     }
   });
 }
+
 function handleRestart() {
   $('main').on('click', '#reset', function () {
     console.log('restart ran');
