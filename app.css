@@ -177,6 +177,10 @@ button {
       background-color:rgb(248, 210, 136, .8);
     }
 
+    .starthead {
+      width: 96.3%;
+    }
+
     .answer_button {
       width: 20rem;
     }

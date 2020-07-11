@@ -115,7 +115,7 @@ function generateQuestion() {
 function generateStart() {
   $('main').html(
     `
-    <header>
+    <header class="starthead">
       <h1 class="centerme">MTG LORE QUIZ: Planeswalkers</h1>
     </header>
     <section id="start"class="parent">
