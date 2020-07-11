@@ -3,7 +3,6 @@
 /* eslint-env jquery */
 
 const questions = [
-
   {
     question: 'Who was the first planeswalker introduced in the magic story line?(not the oldest!)',
     answers: [
@@ -73,11 +72,7 @@ const questions = [
     image: '<img src = \'images/horns.jpg\'>',
     correctImage: '<img src = \'images/grin.jpg\'>'
   }
-
-
 ];
-
-
 
 const state = {
   quizStarted: 'false',
@@ -153,8 +148,6 @@ function generateEnd() {
     `);
 }
 
-
-
 function generateScore() {
   $('header').html(`
   <section id="scoreboard" class=" board">
@@ -162,7 +155,7 @@ function generateScore() {
       <p>Score: ${state.score}</p>
     </div>
     <div id="scoreboard_div" class="prog">
-      <p ">Q: ${state.questionIndex}of 5</p>
+      <p>Q: ${state.questionIndex} of 5</p>
     </div>
 </section>`);
 }
@@ -174,8 +167,6 @@ function generateCorrectAnswer() {
     <h2 id="correct">How did you know that?</h2>
     <div class="visual centerme">
         <h2>Great Job!</h2>
-
-
       <div class="centerme">
         <button id="next" type="submit" class="otherbutton"><label>Next</label></button>
       </div>
@@ -243,12 +234,7 @@ function renderScore() {
   generateScore();
 }
 
-
-
-
-
 /********** EVENT HANDLER FUNCTIONS **********/
-
 
 function handleStartSubmit() {
   $('main').on('click', '.submit_start', function () {

@@ -7,7 +7,6 @@
   *
 */
 
-/** copy from here down*/
 .board{
     display: flex;
     flex-flow: row;
@@ -19,14 +18,12 @@
     flex: 1;
     text-align: start;
     padding-left: 1rem;
-
 }
 
 .prog {
     flex: 1;
     text-align: end;
     padding-right: 1rem;
-
 }
 
 h1 {
@@ -38,10 +35,9 @@ h1 {
 h2 {
   background-color: rgb(255, 223, 122, .4);
   border-radius: 2rem;
-
 }
 
-img{
+img {
   flex: 1;
   border-radius: 1rem;
   width: 90%;
@@ -49,7 +45,7 @@ img{
   place-items: center;
 }
 
-header{
+header {
     border-radius: 1rem;
     background-color:rgb(248, 210, 136, .8);
     width: clamp(23ch, 50vw, 46ch);
@@ -87,12 +83,12 @@ body {
     place-content: center;
   }
 
-  .centerme{
+  .centerme {
     place-items: center;
     text-align: center;
   }
 
-  .answercontainer, .buttoncontainer{
+  .answercontainer, .buttoncontainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -120,12 +116,13 @@ button {
     width: 10rem;
   }
 
-  ul li{
+  ul li {
       align-items: flex-start;
       list-style-type: none;
   }
 
-  @media(min-width:500px){
+  @media(min-width:500px)
+  {
     body {
       height: 100vh;
         margin: 0;
@@ -135,7 +132,7 @@ button {
         background-size: cover;
     }
 
-    h1{
+    h1 {
       text-align: center;
       font-size: 3rem;
       padding: 0rem;
@@ -155,13 +152,10 @@ button {
       margin-top: 1rem;
     }
 
-    img{
+    img {
       border-radius: 2rem;
     }
-    /**.visual {
-      width: 100%;
-      height: 100%;
-    }*/
+
     .card {
       border-radius: 2rem;
       width: 96.3%;
@@ -171,7 +165,7 @@ button {
       place-content: center;
     }
 
-    header{
+    header {
       width: 90%;
       border-radius: 1rem;
       background-color:rgb(248, 210, 136, .8);
@@ -185,13 +179,11 @@ button {
       width: 20rem;
     }
 
-    .otherbutton{
+    .otherbutton {
       margin-right: 1em;
     }
 
-    button{
+    button {
       margin-bottom: 1rem;
     }
 }
-
-/** copy from here up*/
