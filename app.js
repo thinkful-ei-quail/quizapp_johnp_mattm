@@ -1,209 +1,301 @@
+/* eslint-disable no-undef */
 'use strict';
 /* eslint-env jquery */
 
-/**
- * Example store structure
- */
-const questions =
-    // 5 or more questions are required
-    [
-        {
-            question: 'What color is broccoli?',
-            answers: [
-                'red',
-                'orange',
-                'pink',
-                'green'
-            ],
-            correctAnswer: 'green',
-            answered: false
-        },
-        {
-            question: 'What is the current year?',
-            answers: [
-                '1970',
-                '2015',
-                '2019',
-                '2005'
-            ],
-            correctAnswer: '2019',
-            answered: false
-        }
-    ]
+const questions = [
 
-const state = [
-    //this may be better off being moved to an entirely seperate object called state -JP
-    quizStarted = false,
-    questionIndex = 0,
-    score = 0
+  {
+    question: 'Who was the first planeswalker introduced in the magic story line?(not the oldest!)',
+    answers: [
+      'Mishra',
+      'Chandra',
+      'Urza',
+      'Dyfed'
+    ],
+    correctAnswer: 'Dyfed',
+    answered: false,
+    image: '<img src = \"images/planeswalkers.jpg"\>',
+    correctImage: '<img src = \"images/teferi.jpg\">'
+  },
+
+  {
+    question: 'Who won the brothers war?',
+    answers: [
+      'Girrard',
+      'Sqwee',
+      'Mishra',
+      'Urza'
+    ],
+    correctAnswer: 'Urza',
+    answered: false,
+    image: `<img src = images/brothers_war.jpg>`,
+    correctImage: '<img src = \'images/black_lotus.jpg\'>'
+  },
+
+  {
+    question: 'What was the name of Captian Sisay\'s ship?',
+    answers: [
+      'Weatherlight',
+      'Stormbreaker',
+      'Legacy',
+      'Burning Vengeance'
+    ],
+    correctAnswer: 'Weatherlight',
+    answered: false,
+    image: '<img src = \'images/sisay.jpg\'>',
+    correctImage: '<img src = "images/The-Weatherlight.jpg">'
+  },
+
+  {
+    question: 'What plane was Chandra from?',
+    answers: [
+      'Kaladesh',
+      'Regatha',
+      'Zendikar',
+      'Alara'
+    ],
+    correctAnswer: 'Regatha',
+    answered: false,
+    image: '<img src = \'images/chandra.jpg\'>',
+    correctImage: '<img src = \'images/ragatha.jpg\'>'
+  },
+
+  {
+    question: 'Where is the seat of Bolas?',
+    answers: [
+      'Dominaria',
+      'Kamigawa',
+      'Ravnica',
+      'The Meditation Realm'
+    ],
+    correctAnswer: 'The Meditation Realm',
+    answered: false,
+    image: '<img src = \'images/horns.jpg\'>',
+    correctImage: '<img src = \'images/grin.jpg\'>'
+  }
+
+
 ];
 
-/**
- *
- * Technical requirements:
- *
- * Your app should include a render() function, that regenerates the view each time the store is updated.
- * See your course material, consult your instructor, and reference the slides for more details.
- *
- * NO additional HTML elements should be added to the index.html file.
- *
- * You may add attributes (classes, ids, etc) to the existing HTML elements, or link stylesheets or additional scripts if necessary
- *
- * SEE BELOW FOR THE CATEGORIES OF THE TYPES OF FUNCTIONS YOU WILL BE CREATING 👇
- *
- */
+
+
+const state = {
+  quizStarted: 'false',
+  questionIndex: 0,
+  score: 0
+};
+
 
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
-
-//Mark Up Generator Functions -JP
-//these will generate html to be injected into index.html using the .html() function in jquery -JP
-
-
-// These functions return HTML templates
-
-
-
-//function generate(){};
-//function that creates template for each question answers, start screen, end screen
-function generateQuestion(randomQuestionIndex) {//inject html with question and buttons for answers
-    $("main").html(`
-<div>
-    <h2 class="questiontext">${questions[state.questionIndex].question}</h2>
-    <form class="answercontainer">
-        <ul>
-            <li class="answer_button"><button type="button"><label>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
-            <li class="answer_button"><button type="button"><span>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
-            <li class="answer_button"><button type="button"><span>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
-            <li class="answer_button"><button type="button"><span>${questions[state.questionIndex].answers[randomAnswerIndex]}</span></button></li>
-        </ul>
-    </form>
-</div>`
-        //<div><button type="submit"><span>Submit</span></button>
-        //</div>`
-    );
-};
-//function generateStart(){button that starts quiz};-MM
-function generateEnd() {//show score and button to restart-MM
-    $("main").html(`
-    <section id="endscreen" class="board_column_body">
-            <div>
-                <h2 class="finished">Thanks for playing</h2>
-                <ul class="endul">
-                    <li class="finalscore"><span>Score</span></li></ul>
-                </ul>
+function generateQuestion() {
+  $('main').html(
+`<section class="parent">
+  <div class="card centerme">
+      <h2 class="questiontext">${questions[state.questionIndex].question}</h2>
+      <form class="card centerme">
+          <ul >
+            <div class="answercontainer centerme">
+              <li ><button class="answer_button" type="button"><label>${questions[state.questionIndex].answers[0]}</label></button></li>
+              <li ><button class="answer_button" type="button"><label>${questions[state.questionIndex].answers[1]}</label></button></li>
             </div>
-            <div>
-            <button type="reset"><span>Try Again?</span></button>
+            <div class="answercontainer centerme">
+              <li ><button class="answer_button" type="button"><label>${questions[state.questionIndex].answers[2]}</label></button></li>
+              <li ><button class="answer_button" type="button"><label>${questions[state.questionIndex].answers[3]}</label></button></li>
             </div>
-        </section>
+          </ul>
+      </form>
+      <div class="questionimg">${questions[state.questionIndex].image}</div>
+  </div>
+</section>
+`
+  );
+}
+
+function generateStart() {
+  $('main').html(
+    `
+    <header>
+      <h1 class="centerme">MTG LORE QUIZ: Planeswalkers</h1>
+    </header>
+    <section id="start"class="parent">
+        <div class="card centerme">
+          <h2 class="welcometext">Welcome</h2>
+          <div class="visual centerme">
+            <h3>Press Start to Begin</h3>
+
+              <button class="submit_start otherbutton" type="submit">
+                <label>Start</label>
+              </button>
+
+          </div>
+        </div>
+    </section>`
+  );
+}
+
+function generateEnd() {
+  $('main').html(`
+    <section id="endscreen" class="parent">
+      <div class="card centerme">
+        <h2 class="finished">Thanks for playing</h2>
+          <div class="visual centerme">
+          <h3 class="finalscore"><span> Your Final Score is ${state.score}</h3>
+            <button id="reset" type="reset" class="otherbutton">
+              <label>Try Again?</label>
+            </button>
+          </div>
+          <div class="questionimg"><img src = 'images/crux_of_fate.jpg'></div>
+        </div>
+  </section>
+    <section id="scoreboard"></section>
+
     `);
-};
+}
 
-function generateScore() {//show score show progress
-    $("main").html(`<section id="scoreboard">
-    <div id="scoreboard_div">
-        <ul id="scoreboard_ul">
-            <li id="scoreboard_li"><span>Score:</span></li>
-            <li id="scoreboard_li"><span>Progress:</span></li>
-        </ul>
+
+
+function generateScore() {
+  $('header').html(`
+  <section id="scoreboard" class=" board">
+    <div id="scoreboard_div" class="score" >
+      <p>Score: ${state.score}</p>
+    </div>
+    <div id="scoreboard_div" class="prog">
+      <p ">Q: ${state.questionIndex}of 5</p>
     </div>
 </section>`);
-};
+}
 
-function generateCorrectAnswer() {//inject html with correct answer highlighted green and wrong answers highlighted red button to go to next q
-    $("main").html(` <section id="correct" class="board_column_body">
-<div>
+function generateCorrectAnswer() {
+  $('main').html(`
+<section id="correct" class="parent">
+  <div class="card centerme">
     <h2 id="correct">How did you know that?</h2>
-    <ul id="correct">
-        <li id="correct"><span>Correct Answer</li>
-    </ul>
-</div>
-<div>
-    <button id="correct" type="submit"><span>Next</span></button>
-</div>
-</section>`)
-};
+    <div class="visual centerme">
+        <h2>Great Job!</h2>
 
-function generateIncorrectAnswer(){//inject html with correct answer highlighted green and wrong answers highlighted red button to go to next q
-    $("main").html(`<section id="incorrect" class="board_column_body">
-    <div id="incorrect">
+
+      <div class="centerme">
+        <button id="next" type="submit" class="otherbutton"><label>Next</label></button>
+      </div>
+    </div>
+    <div class="questionimg">${questions[state.questionIndex].correctImage}</div>
+  </div>
+</section>
+
+`);
+}
+
+function generateIncorrectAnswer() {
+  $('main').html(`
+  <section id="incorrect" class="parent">
+    <div  class="card centerme">
         <h2 id="incorrect" class="gotitwrong">Go read the lore, noob.</h2>
-        <ul id="incorrect" class="incorrectanswerul">
-            <li id="incorrect" class="incorrectanswer"><span>Correct Answer</li>
-        </ul>
+        <div class="visual centerme">
+          <h3 id="incorrect" class="incorrectanswer class="card centerme"">The answer was ${questions[state.questionIndex].correctAnswer}</h3>
+          <div class="centerme">
+            <button id="next" type="submit" class="otherbutton"><span>Next</span></button>
+          </div>
+        </div>
+        <div class="questionimg"><img src = 'images/wrong!.jpg'></div>
     </div>
-    <div>
-        <button id="incorrect" type="submit"><span>Next</span></button>
-    </div>
-</section>`
-    )
-};
+</section>
+
+`
+  );
+}
 
 /********** RENDER FUNCTION(S) **********/
 
 
-//function render(){};
+
+function renderStart() {
+  $("header").empty();
+  generateStart();
+}
+
 function renderQuestion() {
-    $("main").empty();
-    generateQuestion();
-};
+  generateQuestion();
+  renderScore();
+}
 
-//function renderStart(){call generatestart};-MM
+function renderCorrectAnswer() {
+  generateCorrectAnswer();
+  state.score = state.score + 1;
+  state.questionIndex = state.questionIndex + 1;
+  renderScore();
+}
 
-function renderCorrectAnswer(){//call generateanswer
-    $("main").empty();
-    state.questionIndex = state.questionIndex + 1;
-    state.score = state.score + 1;
-    generateCorrectAnswer();
-};
+function renderIncorrectAnswer() {
+  generateIncorrectAnswer();
+  state.questionIndex = state.questionIndex + 1;
+  renderScore();
+}
 
-function renderIncorrectAnswer(){//call generateanswer
-    $("main").empty();
+function renderEnd() {
+  generateEnd();
+  renderScore();
+}
 
-    generateIncorrectAnswer();
-};
-
-function renderEnd() {//call generate end-MM
-    $("main").empty();
-    generateEnd()
-};
-
-function renderScore() {//call generate score
-    $("main").empty();
-    generateScore();
-};
-
-// these should  call the generator functions and be called by event handlers-JP
+function renderScore() {
+  $('#scoreboard').empty();
+  generateScore();
+}
 
 
-  // This function conditionally replaces the contents of the <main> tag based on the state of the store
+
+
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
-//function handleQuiz(){};--MM
-//function handleStart(){};--MM
-function handleCorrectAnswer(){
-    $(".answer_button").on("submit",function(){
-        if("label".val()===questions[state.questionIndex].correctAnswer){
-            renderCorrectAnswer();
 
-        }
-    })
-    //increment score push user to next question
-};
-//function handleWrong(){};
-//maybe play sound if wrong?
-//funcntion handleEnd(){}
-//function hanldeReset(){};
+function handleStartSubmit() {
+  $('main').on('click', '.submit_start', function () {
+    console.log('start button was pressed');
+    renderQuestion();
 
-//these will call different generator functions for events including opening the page overall-JP
+  }
+  );
+}
 
+function handleAnswer() {
+  $('main').on('click', '.answer_button', function () {
+    if ($(this).closest('li').text() === questions[state.questionIndex].correctAnswer) {
+      console.log(questions[state.questionIndex].correctAnswer);
+      console.log('correct answer ran');
+      renderCorrectAnswer();
+    }
+    else {
+      console.log(questions[state.questionIndex].correctAnswer);
+      renderIncorrectAnswer();
+    }
+  });
+}
 
-  // These functions handle events (submit, click, etc)
+function handleNextButtonPressed() {
+  $('main').on('click', '#next', function () {
+    if (state.questionIndex === questions.length) {
+      renderEnd();
+    } else {
+      renderQuestion();
+    }
+  });
+}
 
+function handleRestart() {
+  $('main').on('click', '#reset', function () {
+    console.log('restart ran');
+    location.reload();
+  });
+}
 
+function handleQuiz() {
+  renderStart();
+  handleStartSubmit();
+  handleAnswer();
+  handleRestart();
+  handleNextButtonPressed();
+}
 
-
-  //will start the intial html injection
-  $(handleQuiz);
+$(handleQuiz);

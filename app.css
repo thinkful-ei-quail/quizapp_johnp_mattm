@@ -7,79 +7,187 @@
   *
 */
 
+/** copy from here down*/
+.board{
+    display: flex;
+    flex-flow: row;
+    font-size:1.2em;
+    color:black;
+}
+
+.score {
+    flex: 1;
+    text-align: start;
+    padding-left: 1rem;
+
+}
+
+.prog {
+    flex: 1;
+    text-align: end;
+    padding-right: 1rem;
+
+}
+
+h1 {
+    color:black;
+    letter-spacing: 0.2rem;
+    font-size: 1.5rem;
+}
+
+h2 {
+  background-color: rgb(255, 223, 122, .4);
+  border-radius: 2rem;
+
+}
+
+img{
+  flex: 1;
+  border-radius: 1rem;
+  width: 90%;
+  margin-top: 2rem;
+  place-items: center;
+}
+
+header{
+    border-radius: 1rem;
+    background-color:rgb(248, 210, 136, .8);
+    width: clamp(23ch, 50vw, 46ch);
+    margin: 0rem 1rem ;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-}
-.main_heading, .board {
-    width: 98%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: .5em;
-}
-.main_heading {
-    height: 7em;
-    background: #939393;
-}
-.board {
-    background: #e8e8e8;
-    height: 71em;
-    display: flex;
-    flex-direction: row;
-}
-.board_column  {
-    width: 33%;
-    margin-top: 0.5em;
-    margin-left: .5em;
-    margin-right: .5em;
-    background: #cfcfcf;
-    height: 70.5em;
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    place-items: center;
+    font-family: 'Fira Sans', sans-serif;
+    background-image: url('images/urza.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .visual {
+    border-radius: 25rem;
+    height: 100px;
+    width: 100%;
+    background:rgb(225, 235, 250, .8 );
+    margin: 0.5rem 0;
+    place-items: center;
+  }
+
+  .card {
+    border-radius: 2rem;
+    width: clamp(23ch, 50vw, 46ch);
     display: flex;
     flex-direction: column;
+    background:rgb(255, 223, 122, .4);
+    padding: 1rem;
+    place-content: center;
+  }
+
+  .centerme{
+    place-items: center;
+    text-align: center;
+  }
+
+  .answercontainer, .buttoncontainer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-left: 0em;
+    margin-right: 3em;
 }
-.board_column_header {
-    width: 100%;
-    background: #939393;
-    height: 4em;
+
+button {
+  box-shadow: 3px 4px 0px 0px #899599;
+  background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+  background-color:rgb(207, 217, 219);
+  border-radius:15px;
+  flex: 1;
+  cursor:pointer;
+  color:black;
+  font-family: 'Fira Sans', sans-serif;
+  font-size:1.2rem;
+  margin:1rem;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #898a94;
+  width: 80%;
 }
-.board_column_body {
-    width: 100%;
-    height: 66.5em;
-    background: #eee;
+
+  .answer_button {
+    width: 10rem;
+  }
+
+  ul li{
+      align-items: flex-start;
+      list-style-type: none;
+  }
+
+  @media(min-width:500px){
+    body {
+      height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-image: url('images/urza_head.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    h1{
+      text-align: center;
+      font-size: 3rem;
+      padding: 0rem;
+      margin-left: 0em;
+      margin-right: 0em;
+    }
+
+    h2 {
+      text-align: center;
+      width: 100%;
+      font-size: 2rem;
+      letter-spacing: 0.3rem;
+
+    }
+
+    .questionimg {
+      margin-top: 1rem;
+    }
+
+    img{
+      border-radius: 2rem;
+    }
+    /**.visual {
+      width: 100%;
+      height: 100%;
+    }*/
+    .card {
+      border-radius: 2rem;
+      width: 96.3%;
+      display: flex;
+      flex-direction: column;
+      background:rgb(255, 223, 122, .4);
+      place-content: center;
+    }
+
+    header{
+      width: 90%;
+      border-radius: 1rem;
+      background-color:rgb(248, 210, 136, .8);
+    }
+
+    .answer_button {
+      width: 20rem;
+    }
+
+    .otherbutton{
+      margin-right: 1em;
+    }
+
+    button{
+      margin-bottom: 1rem;
+    }
 }
-.board_column_body_note {
-    width: 75%;
-    height: 13em;
-    background: #cfcfcf;  /*#f6666 cfcfcf */
-    margin: 1em auto;
-}
-@media all and (max-width: 640px) {
-    .board {
-        flex-direction: column;
-    }
-    .board_column {
-        width: 98%;
-        height: 40em;
-        margin-top: .5em;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .board_column_body_note {
-    width: 85%;
-    height: 6em;
-    }
-}
-@media all and (max-width: 320px) {
-    .board_column {
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .board_column_header {
-        height: 8em;
-    }
-    .board_column_body_note {
-        width: 98%;
-    }
-}
+
+/** copy from here up*/
