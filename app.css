@@ -11,7 +11,25 @@
 body {
     margin: 0;
     padding: 0;
+    background-image: url('images/urza.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+ul {
+    list-style-type: none;
+}
+@media(min-width:400px){
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('images/urza_head.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+}
+
+/*}
 .main_heading, .board {
     width: 98%;
     text-align: center;
@@ -52,7 +70,7 @@ body {
 .board_column_body_note {
     width: 75%;
     height: 13em;
-    background: #cfcfcf;  /*#f6666 cfcfcf */
+    background: #cfcfcf; 
     margin: 1em auto;
 }
 @media all and (max-width: 640px) {
@@ -82,4 +100,4 @@ body {
     .board_column_body_note {
         width: 98%;
     }
-}
+}*/
